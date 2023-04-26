@@ -2,7 +2,7 @@ $(document).ready(function() {
 });
 
 async function crearUsuarios(){
-  
+
   let datos ={};
   datos.nombre = document.getElementById("txtNombre").value;
   datos.apellido = document.getElementById("txtApellido").value;

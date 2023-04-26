@@ -24,6 +24,7 @@ async function cargarUsuarios(){
                     '</td><td>'+ usuario.apellido+
                     '</td><td>'+usuario.correo+
                     '<td>'+ usuario.telefono +
+                     '<td>'+ usuario.contrasena +
                     '</td><td>'+ BotonBorrar +'</td></tr>';
 
   usuariosList+= usuarioHTML;

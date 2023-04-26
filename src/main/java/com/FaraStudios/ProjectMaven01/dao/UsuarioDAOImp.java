@@ -31,5 +31,10 @@ import java.util.List;
             entityManager.remove(usuarioDelete);
         }
 
+        @Override
+        public void registrarUsuario(usuario Usuario) {
+            entityManager.merge(Usuario);
+        }
+
 
     }

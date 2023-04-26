@@ -3,10 +3,8 @@ import com.FaraStudios.ProjectMaven01.Models.usuario;
 import com.FaraStudios.ProjectMaven01.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -25,4 +23,10 @@ public class usuarioController {
     public void deleteUsuarios( @PathVariable long id){
     usuarioDAO.BorrarUsuario(id);
     }
+
+    @RequestMapping(value = "usuarios", method=RequestMethod.POST)
+    public void crearUsuarios(@RequestBody usuario Usuario){
+       usuarioDAO.registrarUsuario(Usuario);
+    }
+
 }

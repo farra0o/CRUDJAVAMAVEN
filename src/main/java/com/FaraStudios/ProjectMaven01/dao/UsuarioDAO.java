@@ -7,6 +7,8 @@ import java.util.List;
 public interface UsuarioDAO {
     List<usuario> ConseguirUsuarios();
    void BorrarUsuario(long id);
+
+    void registrarUsuario(usuario Usuario);
 }
 
 

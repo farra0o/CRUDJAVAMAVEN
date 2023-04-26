@@ -36,5 +36,17 @@ import java.util.List;
             entityManager.merge(Usuario);
         }
 
+        @Override
+        public boolean VerificarPassLogin(usuario usuario) {
+            String query ="FROM usuario where correo= :correo AND contraseña= :contraseña";
+
+          List<usuario> lista= entityManager.createQuery(query)
+                               .setParameter("correo", usuario.getCorreo())
+                               .setParameter("contraseña", usuario.getContrasena())
+                               .getResultList();
+            return  !lista.isEmpty();
+
+        }
+
 
     }

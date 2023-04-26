@@ -9,6 +9,8 @@ public interface UsuarioDAO {
    void BorrarUsuario(long id);
 
     void registrarUsuario(usuario Usuario);
+
+    boolean VerificarPassLogin(usuario usuario);
 }
 
 

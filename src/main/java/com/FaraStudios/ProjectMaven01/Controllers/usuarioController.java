@@ -29,4 +29,5 @@ public class usuarioController {
        usuarioDAO.registrarUsuario(Usuario);
     }
 
+
 }

@@ -25,5 +25,6 @@ async function crearUsuarios(){
     },
     body: JSON.stringify(datos)
   });
-    alert ("Cuenta creada")
+    alert ("Cuenta creada");
+    location.reload();
 }

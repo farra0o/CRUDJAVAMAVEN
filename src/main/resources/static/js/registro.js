@@ -26,6 +26,4 @@ async function crearUsuarios(){
     body: JSON.stringify(datos)
   });
 
-  const usuarios = await Request.json();
-
 }

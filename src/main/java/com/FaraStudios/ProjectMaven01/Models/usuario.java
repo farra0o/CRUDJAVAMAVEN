@@ -10,8 +10,10 @@ public class usuario {
 
     @Id
     @Getter @Setter
-    @Column(name = "id")
+    @Column(name = "id",unique=true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
     private Long id;
 
     @Getter @Setter @Column(name = "nombre")

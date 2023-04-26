@@ -9,10 +9,6 @@ async function iniciarSesion(){
 
   datos.contrasena = document.getElementById("txtContraseña").value;
 
-
-
-
-
   const Request = await fetch('usuarios', {
     method: 'POST',
     headers: {

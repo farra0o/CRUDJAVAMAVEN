@@ -1,6 +1,8 @@
 package com.FaraStudios.ProjectMaven01.dao;
 import com.FaraStudios.ProjectMaven01.Models.usuario;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -38,14 +40,19 @@ import java.util.List;
 
         @Override
         public boolean VerificarPassLogin(usuario usuario) {
-            String query ="FROM usuario where correo= :correo AND contraseña= :contraseña";
 
-          List<usuario> lista= entityManager.createQuery(query)
+            String query ="FROM usuario where correo= :correo ";
+            List<usuario> lista= entityManager.createQuery(query)
                                .setParameter("correo", usuario.getCorreo())
-                               .setParameter("contraseña", usuario.getContrasena())
                                .getResultList();
-            return  !lista.isEmpty();
 
+            if (lista.isEmpty()){
+                return  false;
+            }
+
+            String passwordHashed = lista.get(0).getContrasena();
+            Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+            return argon2.verify(passwordHashed, usuario.getContrasena());
         }
 
 

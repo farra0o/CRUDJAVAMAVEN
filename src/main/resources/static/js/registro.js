@@ -25,5 +25,6 @@ async function crearUsuarios(){
     },
     body: JSON.stringify(datos)
   });
-
+    alert("cuenta ha sido creada con exito!")
+    window.location.href = "login.html"
 }

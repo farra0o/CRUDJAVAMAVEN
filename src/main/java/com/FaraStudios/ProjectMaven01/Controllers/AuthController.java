@@ -1,5 +1,4 @@
 package com.FaraStudios.ProjectMaven01.Controllers;
-
 import com.FaraStudios.ProjectMaven01.Models.usuario;
 import com.FaraStudios.ProjectMaven01.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,8 @@ public class AuthController {
 
     @Autowired
     UsuarioDAO usuarioDAO;
-    private Object entityManager;
-    @RequestMapping(value = "usuarios", method= RequestMethod.POST)
+
+    @RequestMapping(value = "login", method= RequestMethod.POST)
     public String login(@RequestBody usuario Usuario){
         if (usuarioDAO.VerificarPassLogin(Usuario)){
             return "OK";

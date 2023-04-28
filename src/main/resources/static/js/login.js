@@ -17,5 +17,14 @@ async function iniciarSesion(){
     },
     body: JSON.stringify(datos)
   });
+  
+  const respuesta = await requestAnimationFrame.text();
+  if (respuesta != 'FAIL'){
+    localStorage.token = respuesta;
+    localStorage.email = datos.correo;
+    windows.location.href= "usuarios.html"
 
+  } else {
+    alert (" Las credenciales son Incorrectas por favor intente de nuevo")
+  }
 }

@@ -10,7 +10,7 @@ public interface UsuarioDAO {
 
     void registrarUsuario(usuario Usuario);
 
-    boolean VerificarPassLogin(usuario usuario);
+    usuario CredencialesDeUsuario(usuario usuario);
 }
 
 

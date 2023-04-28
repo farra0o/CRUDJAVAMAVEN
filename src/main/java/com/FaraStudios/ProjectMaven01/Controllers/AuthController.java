@@ -1,4 +1,5 @@
 package com.FaraStudios.ProjectMaven01.Controllers;
+import com.FaraStudios.ProjectMaven01.JWTutils.JWTUtils;
 import com.FaraStudios.ProjectMaven01.Models.usuario;
 import com.FaraStudios.ProjectMaven01.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,15 @@ public class AuthController {
 
     @Autowired
     UsuarioDAO usuarioDAO;
-
+    @Autowired
+    JWTUtils jwt;
     @RequestMapping(value = "login", method= RequestMethod.POST)
     public String login(@RequestBody usuario Usuario){
-        if (usuarioDAO.VerificarPassLogin(Usuario)){
-            return "OK";
+        usuario credencialUsuario =usuarioDAO.CredencialesDeUsuario(Usuario);
+        if (credencialUsuario!= null){
+
+            String token = jwt.create(String.valueOf(credencialUsuario.getId()),credencialUsuario.getCorreo());
+            return  token;
         }
         return "Error de Credenciales";
     }

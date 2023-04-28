@@ -39,7 +39,7 @@ import java.util.List;
         }
 
         @Override
-        public boolean VerificarPassLogin(usuario usuario) {
+        public usuario CredencialesDeUsuario(usuario usuario) {
 
             String query ="FROM usuario where correo= :correo ";
             List<usuario> lista= entityManager.createQuery(query)
@@ -47,12 +47,15 @@ import java.util.List;
                                .getResultList();
 
             if (lista.isEmpty()){
-                return  false;
+                return  null;
             }
 
             String passwordHashed = lista.get(0).getContrasena();
             Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-            return argon2.verify(passwordHashed, usuario.getContrasena());
+            if (argon2.verify(passwordHashed, usuario.getContrasena())){
+                return lista.get(0);
+            }
+            return null;
         }
 
 

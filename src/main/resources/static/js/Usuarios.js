@@ -4,15 +4,19 @@ $(document).ready(function() {
   $('#Usuarios').DataTable();
 });
 
+function getHeader(){
+  return {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization':localStorage.token
+  };
+}
 
 async function cargarUsuarios(){
 
   const Request = await fetch('usuarios', {
     method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
+    headers: getHeader(),
   });
   const usuarios = await Request.json();
 
@@ -43,10 +47,7 @@ if (!confirm("Desea eliminar Usuario")){
 
 const Request = await fetch('usuarios/' +id, {
   method: 'DELETE',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
+  headers: getHeader()
 });
   location.reload()
 }

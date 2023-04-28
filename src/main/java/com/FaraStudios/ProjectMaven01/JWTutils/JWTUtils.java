@@ -1,5 +1,4 @@
 package com.FaraStudios.ProjectMaven01.JWTutils;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
